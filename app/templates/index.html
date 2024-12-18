@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OBSERV3R</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        async function refreshStats(trackerName = null) {
+            const endpoint = trackerName ? '/refresh' : '/refresh';
+            const payload = trackerName ? { tracker_name: trackerName } : {};
+            await fetch(endpoint, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+            });
+            fetchStats();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchStats();
+            setInterval(fetchStats, 60000 * {{ refresh_interval }}); // Refresh interval in minutes
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>OBSERV3R</h1>
+        <p>Tracking your trackers.</p>
+
+        <!-- Dark/Light Mode Toggle -->
+        <button id="theme-toggle" onclick="toggleTheme()">Toggle Dark/Light Mode</button>
+
+        <table>
+            <thead>
+                <tr>
+                    <th><i class="fas fa-tv"></i> Tracker</th>
+                    <th><i class="fas fa-user"></i> Username</th>
+                    <th><i class="fas fa-users"></i> Group</th>
+                    <th><i class="fas fa-upload"></i> Uploaded</th>
+                    <th><i class="fas fa-download"></i> Downloaded</th>
+                    <th><i class="fas fa-chart-line"></i> Ratio</th>
+                    <th><i class="fas fa-cogs"></i> Buffer</th>
+                    <th><i class="fas fa-cloud-upload-alt"></i> Seeding</th>
+                    <th><i class="fas fa-cloud-download-alt"></i> Leeching</th>
+                    <th><i class="fas fa-cogs"></i> Seedbonus</th>
+                    <th><i class="fas fa-exclamation-triangle"></i> Hit and Runs</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tracker in config['trackers'] %}
+                <tr>
+                    <td>{{ tracker['name'] }}</td>
+                    <td>{{ tracker.get('username', 'N/A') }}</td>
+                    <td>{{ tracker.get('group', 'N/A') }}</td>
+                    <td>{{ tracker.get('uploaded', 'N/A') }}</td>
+                    <td>{{ tracker.get('downloaded', 'N/A') }}</td>
+                    <td>{{ tracker.get('ratio', 'N/A') }}</td>
+                    <td>{{ tracker.get('buffer', 'N/A') }}</td>
+                    <td>{{ tracker.get('seeding', 'N/A') }}</td>
+                    <td>{{ tracker.get('leeching', 'N/A') }}</td>
+                    <td>{{ tracker.get('seedbonus', 'N/A') }}</td>
+                    <td>{{ tracker.get('hit_and_runs', 'N/A') }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button onclick="refreshStats()">Refresh All</button>
+    </div>
+
+    <script>
+        // Function to toggle dark and light mode
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        // Set initial theme based on localStorage or default to light
+        if(localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+
+        // Store the theme preference in localStorage
+        document.getElementById('theme-toggle').addEventListener('click', function() {
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    </script>
+</body>
+
+</html>

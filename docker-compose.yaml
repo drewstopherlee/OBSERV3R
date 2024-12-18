@@ -1,0 +1,14 @@
+services:
+  observ3r:
+    image: drewstopherlee/observ3r:latest
+    container_name: observ3r
+    ports:
+      - 8383:8383
+    environment:
+      - REFRESH_INTERVAL=60 # Refresh interval in minutes; can be set in the config file also (DEFAULT: 60)
+      # A default configuration file will be generated at /config/config.yaml -- You can set a custom config location using bind mounts or environment variables.
+      - CONFIG_FILE=/config/config.yaml # Configuration file location (DEFAULT: /config/config.yaml)
+      - DEBUG=false # (DEFAULT: false)
+    volumes:
+      - $(pwd):/config # REQUIRED: Change this to the desired location of your config file
+    restart: unless-stopped

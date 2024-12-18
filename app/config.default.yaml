@@ -1,0 +1,8 @@
+trackers:
+  - name: "Example Tracker 1"
+    address: "https://tracker1.example.com"
+    api_key: "your-api-key-1"
+  - name: "Example Tracker 2"
+    address: "https://tracker2.example.com"
+    api_key: "your-api-key-2"
+refresh_interval: 60  # Default to 30 minutes
