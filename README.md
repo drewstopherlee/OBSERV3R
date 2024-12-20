@@ -1,6 +1,3 @@
-# OBSERV3R
-Track your trackers.
-
 <!-- Improved compatibility of back to top link: See: https://github.com/drewstopherlee/OBSERV3R/pull/73 -->
 <a id="readme-top"></a>
 <!--
