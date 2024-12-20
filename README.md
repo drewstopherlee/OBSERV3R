@@ -26,7 +26,7 @@ Track your trackers.
 [![Issues][issues-shield]][issues-url]
 [![Forks][forks-shield]][forks-url]
 [![Unlicense License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+<!-- [![LinkedIn][linkedin-shield]][linkedin-url] -->
 
 
 
