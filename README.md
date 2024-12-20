@@ -261,9 +261,9 @@ Use this space to list resources you find helpful and would like to give credit 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/andrewrshaffer
 [product-screenshot]: images/screenshot.png
-[Python.org]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
+[Python.org]: https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=white
 [Python-url]: https://jquery.com 
-[Flask]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
+[Flask]: https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=Flask&logoColor=white
 [Flask-url]: https://flask.palletsprojects.com/en/stable/ 
-[Docker.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
+[Docker.com]: https://img.shields.io/badge/docker-0DB7ED?style=for-the-badge&logo=docker&logoColor=white
 [Docker-url]: https://www.docker.com/

@@ -78,7 +78,7 @@ def index():
         return (
             "<h1>OBSERV3R: Tracker Stats Dashboard</h1>"
             "<h1>OBSERV3R is running.</h1>"
-            "<p>A default configuration file has been created at <b>{CONFIG_PATH}</b>.</p>"
+            "<p>A default configuration file has been created at <b>{config_file_path}</b>.</p>"
             "<p>Please update this file with your trackers and restart the app.</p>"
         )
     return render_template("index.html", refresh_interval=refresh_interval_minutes)

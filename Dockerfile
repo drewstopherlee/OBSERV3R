@@ -5,11 +5,11 @@ FROM python:3.10-slim
 WORKDIR /app
 
 # Install dependencies
-COPY ./app/requirements.txt /app/requirements.txt
+COPY app/requirements.txt /app/requirements.txt
 RUN pip install -r requirements.txt
 
 # Copy application files into the /app directory
-COPY app/ /app/
+COPY app /app
 
 # Create volume for config file
 VOLUME /config
